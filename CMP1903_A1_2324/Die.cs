@@ -14,7 +14,15 @@ namespace CMP1903_A1_2324
          */
 
         //Property
+		int dieNumber = 0;
 		
 		//method
+		public static int Roll() 
+		{
+			//Console.WriteLine("The code is still working.");
+			Random rnd = new Random();
+			dieNumber = rnd.Next(1, 7);
+			return dieNumber;
+		}
     }
 }
