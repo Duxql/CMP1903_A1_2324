@@ -14,7 +14,7 @@ namespace CMP1903_A1_2324
          */
 
         //Property
-		test
+		int dice = rnd.Next(1, 7); 
 
         //Method
 
