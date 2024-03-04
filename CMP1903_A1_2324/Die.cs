@@ -14,14 +14,7 @@ namespace CMP1903_A1_2324
          */
 
         //Property
-		int dice = 0;
 		
 		//method
-		class Roll
-		{
-			dice = rnd.Next(1, 7);
-
-			return dice;
-		}
     }
 }
