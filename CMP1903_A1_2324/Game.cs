@@ -16,19 +16,23 @@ namespace CMP1903_A1_2324
          */
 		
         //Methods
-		public static int DiceTotal() 
+		public static void DiceTotal() 
         {
-            Console.WriteLine("I will attempt to make a dice and roll it");
+            //Console.WriteLine("I will attempt to make a dice and roll it");
             Die myDieOne = new Die(0);
 			myDieOne.Value = Die.Roll();
+			Console.WriteLine("The first dice roll is: " + myDieOne.Value);
 			Die myDieTwo = new Die(0);
 			myDieTwo.Value = Die.Roll();
+			Console.WriteLine("The second dice roll is: " + myDieTwo.Value);
 			Die myDieThree = new Die(0);
 			myDieThree.Value = Die.Roll();
+			Console.WriteLine("The third dice roll is: " + myDieThree.Value);
+			
           	int sum = 0;
             sum = myDieOne.Value + myDieTwo.Value + myDieThree.Value;
-    
-            return sum;
+			
+			Console.WriteLine("The sum of the dices rolled is: " + sum);
         }
 
     }
