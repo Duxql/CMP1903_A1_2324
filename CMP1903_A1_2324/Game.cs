@@ -17,7 +17,7 @@ namespace CMP1903_A1_2324
 		
         //Methods
 		//create a method that rolls 3 dices and sums them up while displaying the value of each dice and the sum of the dice
-		public static void DiceTotal() 
+		public static int DiceTotal() 
         {
             //Console.WriteLine("I will attempt to make a dice and roll it");
 			//create 3 dices
@@ -39,6 +39,7 @@ namespace CMP1903_A1_2324
             sum = myDieOne.Value + myDieTwo.Value + myDieThree.Value;
 			
 			Console.WriteLine("The sum of the dices rolled is: " + sum);
+			return sum;
         }
 
     }
