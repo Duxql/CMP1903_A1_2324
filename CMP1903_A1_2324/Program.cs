@@ -15,8 +15,13 @@ namespace CMP1903_A1_2324
              * Create a Testing object to verify the output and operation of the other classes.
              */
 			 
+			 //Roll the dices and sum them up
 			 Game.DiceTotal();
+			 
+			 //Test that it's correctly rolling dices
 			 Testing.testDie();
+			 
+			 //Test that it's currently summing up the dices
 			 Testing.testSum();
         }
     }
