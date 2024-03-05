@@ -16,6 +16,8 @@ namespace CMP1903_A1_2324
              */
 			 
 			 Game.DiceTotal();
+			 Testing.testDie();
+			 Testing.testSum();
         }
     }
 }
