@@ -14,20 +14,19 @@ namespace CMP1903_A1_2324
          */
 
         //Property
-		public int Value{ get; set; }
+		public int Value{get; set;}
         public Die(int value)
         {
             Value = value;
         }
 		
 		//method
-		public static int Roll() 
+		public static int Roll()
         {
 			//Console.WriteLine("The code is still working.");
 			Random rnd = new Random();
 			int dieNumber = rnd.Next(1, 7);
-			myDie.Value = dieNumber;
-			return myDie.Value;
+			return dieNumber;
         }
     }
 }
