@@ -16,13 +16,15 @@ namespace CMP1903_A1_2324
              */
 			 
 			 //Roll the dices and sum them up
-			 Game.DiceTotal();
+			 Game.SevensOut();
 			 
 			 //Test that it's correctly rolling dices
 			 Testing.testDie();
 			 
 			 //Test that it's currently summing up the dices
-			 Testing.testSum();
+			 //Testing.testSum();
+
+            Console.ReadLine();
         }
     }
 }

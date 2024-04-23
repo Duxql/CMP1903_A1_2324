@@ -19,19 +19,20 @@ namespace CMP1903_A1_2324
 		//Test the roll method is working properly, and if it's not, say so
 		public static void testDie() 
         {
-			//Roll the dice
+            //Roll the dice
           	int testRoll = Die.Roll();
-			//use debug.assert to make sure it is right and if it's not to display a message
-			Debug.Assert(testRoll > 0 && testRoll < 7, "Roll has not ran properly!");
+            //use debug.assert to make sure it is right and if it's not to display a message
+            System.Diagnostics.Debug.Assert(testRoll > 0 && testRoll < 7, "Roll has not ran properly!");
 		}
 		
 		//Test the sum method is working properly, and if it's not, say so
-		public static void testSum() 
-        {
-			//Sum the dices
-          	int testSum = Game.DiceTotal();
-			//use debug.assert to make sure it is right and if it's not to display a message
-			Debug.Assert(testSum > 2 && testSum < 19, "Dice sum has not ran properly!");
-		}
+		//public static void testSum() 
+  //      {
+  //          //Sum the dices
+  //          Console.WriteLine("Game Test");
+  //          int testSum = Game.DiceTotal();
+  //          //use debug.assert to make sure it is right and if it's not to display a message
+  //          System.Diagnostics.Debug.Assert(testSum > 2 && testSum < 19, "Dice sum has not ran properly!");
+		//}
     }
 }

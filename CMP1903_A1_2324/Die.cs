@@ -23,12 +23,14 @@ namespace CMP1903_A1_2324
 		
 		//method
 		//create a method that generates a random number 1-6 and it returns that value to anything that calls this method
-		private static Random rnd = new Random();
+        private static Random rnd = new Random();
 		public static int Roll()
-		{
+        {
+			//Console.WriteLine("The code is still working.")
 			//randomise the number
+            //Console.WriteLine("test" + dieNumber);
 			//return the number
 			return rnd.Next(1, 7);
-		}
+        }
     }
 }
