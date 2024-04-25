@@ -70,15 +70,46 @@ namespace CMP1903_A1_2324
             bool gameOver = false;
             Console.WriteLine("1 Player or 2 Players? 1 | 2");
             int amountOfPlayers = int.Parse(Console.ReadLine());
-            if (amountOfPlayers == 1)
+            while (gameOver == false)
             {
-                userOnePoints += ThreeOrMorePlayer(userOnePoints, 1);
-                userTwoPoints += ThreeOrMorePlayer(userTwoPoints, 0);
-            }
-            else if (amountOfPlayers == 2)
-            {
-                userOnePoints += ThreeOrMorePlayer(userOnePoints, 1);
-                userTwoPoints += ThreeOrMorePlayer(userTwoPoints, 1);
+                if (amountOfPlayers == 1)
+                {
+                    userOnePoints += ThreeOrMorePlayer(userOnePoints, 1);
+                    if (userOnePoints >= 20)
+                    {
+                        Console.WriteLine("Player 1 has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Player 2 - " + userTwoPoints);
+                        Console.ReadLine();
+                        gameOver = true;
+                        break;
+                    }
+                    userTwoPoints += ThreeOrMorePlayer(userTwoPoints, 0);
+                    if (userTwoPoints >= 20)
+                    {
+                        Console.WriteLine("Player 2 has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Player 2 - " + userTwoPoints);
+                        Console.ReadLine();
+                        gameOver = true;
+                        break;
+                    }
+                }
+                else if (amountOfPlayers == 2)
+                {
+                    userOnePoints += ThreeOrMorePlayer(userOnePoints, 1);
+                    if (userOnePoints >= 20)
+                    {
+                        Console.WriteLine("Player 1 has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Player 2 - " + userTwoPoints);
+                        Console.ReadLine();
+                        gameOver = true;
+                        break;
+                    }
+                    userTwoPoints += ThreeOrMorePlayer(userTwoPoints, 1);   
+                    if (userTwoPoints >= 20)
+                    {
+                        Console.WriteLine("Player 2 has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Player 2 - " + userTwoPoints);
+                        Console.ReadLine();
+                        gameOver = true;
+                        break;
+                    }
+                }
             }
             
         }
@@ -95,6 +126,15 @@ namespace CMP1903_A1_2324
             dieFour.Value = Die.Roll();
             Die dieFive = new Die(0);
             dieFive.Value = Die.Roll();
+
+            if (playerOrNot == 1)
+            {
+                //user code
+            }
+            else if (playerOrNot == 0)
+            {
+                //computer code
+            }
 
             return userPoints;
         }
