@@ -65,14 +65,25 @@ namespace CMP1903_A1_2324
 
         public static void ThreeOrMore()
         {
-            Console.WriteLine("1 Player or 2 Players? 1 | 2");
-            int amountOfPlayers = int.Parse(Console.ReadLine());
             int userOnePoints = 0;
             int userTwoPoints = 0;
             bool gameOver = false;
+            Console.WriteLine("1 Player or 2 Players? 1 | 2");
+            int amountOfPlayers = int.Parse(Console.ReadLine());
+            if (amountOfPlayers == 1)
+            {
+                userOnePoints += ThreeOrMorePlayer(userOnePoints, 1);
+                userTwoPoints += ThreeOrMorePlayer(userTwoPoints, 0);
+            }
+            else if (amountOfPlayers == 2)
+            {
+                userOnePoints += ThreeOrMorePlayer(userOnePoints, 1);
+                userTwoPoints += ThreeOrMorePlayer(userTwoPoints, 1);
+            }
+            
         }
 
-        public static int ThreeOrMorePlayerOne(int userOnePoints)
+        public static int ThreeOrMorePlayer(int userPoints, int playerOrNot)
         {
             Die dieOne = new Die(0);
             dieOne.Value = Die.Roll();
@@ -85,23 +96,7 @@ namespace CMP1903_A1_2324
             Die dieFive = new Die(0);
             dieFive.Value = Die.Roll();
 
-            return userOnePoints;
-        }
-
-        public static int ThreeOrMorePlayerTwo(int userTwoPoints)
-        {
-            Die dieOne = new Die(0);
-            dieOne.Value = Die.Roll();
-            Die dieTwo = new Die(0);
-            dieTwo.Value = Die.Roll();
-            Die dieThree = new Die(0);
-            dieThree.Value = Die.Roll();
-            Die dieFour = new Die(0);
-            dieFour.Value = Die.Roll();
-            Die dieFive = new Die(0);
-            dieFive.Value = Die.Roll();
-
-            return userTwoPoints;
+            return userPoints;
         }
 
     }
