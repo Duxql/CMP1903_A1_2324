@@ -20,7 +20,7 @@ namespace CMP1903_A1_2324
         {
             //Sum the dices
             Console.WriteLine("Sevens Out Test");
-            int testSum = Game.SevensOut();
+            int testSum = Game.GetSum();
             //use debug.assert to make sure it is right and if it's not to display a message
             Debug.Assert(testSum == 7, "Dice sum has not ran properly!");
         }
@@ -28,7 +28,7 @@ namespace CMP1903_A1_2324
         {
             //Sum the dices
             Console.WriteLine("Three Or More Test");
-            int testScore = Game.ThreeOrMore();
+            int testScore = Game.GetScore();
             //use debug.assert to make sure it is right and if it's not to display a message
             Debug.Assert(testScore > 19, "Dice sum has not ran properly!");
         }

@@ -11,7 +11,7 @@ namespace CMP1903_A1_2324
         static void Main(string[] args)
         {
             bool quit = false;
-            while (quit == false) 
+            while (quit == false)
             {
                 Console.WriteLine("Which game would you like to play? Sevens Out Or ThreeOrMore? S / T");
                 string userAnswer = Console.ReadLine();
@@ -19,6 +19,25 @@ namespace CMP1903_A1_2324
                 {
                     Game.SevensOut();
                     Testing.testSum();
+                    do
+                    {
+                        Console.WriteLine("Would you like to see the statistics for Sevens Out? Y / N");
+                        string userContinue = Console.ReadLine();
+                        if (userContinue == "Y")
+                        {
+                            Statistics.SevensOutStatistics();
+                        }
+                        else if (userContinue == "N")
+                        {
+                            quit = true;
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input. Please enter Y or N.");
+                            Console.ReadLine();
+                        }
+                    } while (true);
                     do
                     {
                         Console.WriteLine("Would you like to play again? Y / N");
@@ -44,6 +63,25 @@ namespace CMP1903_A1_2324
                 {
                     Game.ThreeOrMore();
                     Testing.testScore();
+                    do
+                    {
+                        Console.WriteLine("Would you like to see the statistics for Three Or More? Y / N");
+                        string userContinue = Console.ReadLine();
+                        if (userContinue == "Y")
+                        {
+                            Statistics.ThreeOrMoreStatistics();
+                        }
+                        else if (userContinue == "N")
+                        {
+                            quit = true;
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input. Please enter Y or N.");
+                            Console.ReadLine();
+                        }
+                    } while (true);
                     do
                     {
                         Console.WriteLine("Would you like to play again? Y / N");

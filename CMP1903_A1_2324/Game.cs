@@ -17,12 +17,18 @@ namespace CMP1903_A1_2324
 
         //Methods
         //create a method that rolls 3 dices and sums them up while displaying the value of each dice and the sum of the dice
-        public static int SevensOut()
+
+
+        private static int sum;
+        private static int numberOfPlays;
+        private static int scoreWinner;
+        private static int playsForWin;
+
+        public static void SevensOut()
         {
             //roll each dice
             //display the value of each dice
             bool gameOver = false;
-            int sum = 0;
             while (gameOver == false)
             {
 
@@ -49,6 +55,7 @@ namespace CMP1903_A1_2324
                 //if the sum is 7, end the game
                 if (dieOne.Value + dieTwo.Value == 7)
                 {
+                    numberOfPlays++;
                     Console.WriteLine("The current sum of all your dices: " + sum);
                     Console.WriteLine("Game Over! You got a sum of 7 in the last 2 dices, unlucky!");
                     gameOver = true;
@@ -57,15 +64,25 @@ namespace CMP1903_A1_2324
                 else
                 {
                     Console.WriteLine("The current sum of all your dices: " + sum);
+                    numberOfPlays++;
                     Console.ReadLine();
                 }
             }
-            return sum;
         }
 
-        public static int ThreeOrMore()
+        public static int GetSum()
         {
-            int gameWinner = 0;
+            return sum;
+        }
+        public static int GetNumberOfPlays()
+        {
+            return numberOfPlays;
+        }
+
+        public static void ThreeOrMore()
+        {
+            int counterForPlaysPlayerOne = 0;
+            int counterForPlaysPlayerTwo = 0;
             int userOnePoints = 0;
             int userTwoPoints = 0;
             bool gameOver = false;
@@ -76,21 +93,25 @@ namespace CMP1903_A1_2324
                 if (amountOfPlayers == 1)
                 {
                     Console.WriteLine("Player 1 Turn");
+                    counterForPlaysPlayerOne++;
                     userOnePoints = ThreeOrMorePlayer(userOnePoints, 1);
                     if (userOnePoints >= 20)
                     {
                         Console.WriteLine("Player 1 has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Player 2 - " + userTwoPoints);
-                        gameWinner = 1;
+                        scoreWinner = userOnePoints;
+                        playsForWin = counterForPlaysPlayerOne;
                         Console.ReadLine();
                         break;
                     }
                     Console.ReadLine();
                     Console.WriteLine("Computer Turn");
+                    counterForPlaysPlayerTwo++;
                     userTwoPoints = ThreeOrMorePlayer(userTwoPoints, 0);
                     if (userTwoPoints >= 20)
                     {
                         Console.WriteLine("Computer has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Computer - " + userTwoPoints);
-                        gameWinner = 2;
+                        scoreWinner = userTwoPoints;
+                        playsForWin = counterForPlaysPlayerTwo;
                         Console.ReadLine();
                         break;
                     }
@@ -101,21 +122,25 @@ namespace CMP1903_A1_2324
                 else if (amountOfPlayers == 2)
                 {
                     Console.WriteLine("Player 1 Turn");
+                    counterForPlaysPlayerOne++;
                     userOnePoints = ThreeOrMorePlayer(userOnePoints, 1);
                     if (userOnePoints >= 20)
                     {
                         Console.WriteLine("Player 1 has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Player 2 - " + userTwoPoints);
-                        gameWinner = 1;
+                        scoreWinner = userOnePoints;
+                        playsForWin = counterForPlaysPlayerOne;
                         Console.ReadLine();
                         break;
                     }
                     Console.ReadLine();
                     Console.WriteLine("Player 2 Turn");
+                    counterForPlaysPlayerTwo++;
                     userTwoPoints = ThreeOrMorePlayer(userTwoPoints, 1);
                     if (userTwoPoints >= 20)
                     {
                         Console.WriteLine("Player 2 has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Player 2 - " + userTwoPoints);
-                        gameWinner = 2;
+                        scoreWinner = userTwoPoints;
+                        playsForWin = counterForPlaysPlayerTwo;
                         Console.ReadLine();
                         break;
                     }
@@ -124,14 +149,14 @@ namespace CMP1903_A1_2324
                     Console.ReadLine();
                 }
             }
-            if (gameWinner == 1)
-            {
-                return userOnePoints;
-            }
-            else if (gameWinner == 2)
-            {
-                return userTwoPoints;
-            }
+        }
+        public static int GetScore()
+        {
+            return scoreWinner;
+        }
+        public static int GetPlaysForWin()
+        {
+            return playsForWin;
         }
 
         public static int ThreeOrMorePlayer(int userPoints, int playerOrNot)
