@@ -15,24 +15,22 @@ namespace CMP1903_A1_2324
          * Use debug.assert() to make the comparisons and tests.
          */
 
-        //Method
-		//Test the roll method is working properly, and if it's not, say so
-		public static void testDie() 
+        //Test the sum method is working properly, and if it's not, say so
+        public static void testSum()
         {
-            //Roll the dice
-          	int testRoll = Die.Roll();
+            //Sum the dices
+            Console.WriteLine("Sevens Out Test");
+            int testSum = Game.SevensOut();
             //use debug.assert to make sure it is right and if it's not to display a message
-            System.Diagnostics.Debug.Assert(testRoll > 0 && testRoll < 7, "Roll has not ran properly!");
-		}
-		
-		//Test the sum method is working properly, and if it's not, say so
-		//public static void testSum() 
-  //      {
-  //          //Sum the dices
-  //          Console.WriteLine("Game Test");
-  //          int testSum = Game.DiceTotal();
-  //          //use debug.assert to make sure it is right and if it's not to display a message
-  //          System.Diagnostics.Debug.Assert(testSum > 2 && testSum < 19, "Dice sum has not ran properly!");
-		//}
+            Debug.Assert(testSum == 7, "Dice sum has not ran properly!");
+        }
+        public static void testScore()
+        {
+            //Sum the dices
+            Console.WriteLine("Three Or More Test");
+            int testScore = Game.ThreeOrMore();
+            //use debug.assert to make sure it is right and if it's not to display a message
+            Debug.Assert(testScore > 19, "Dice sum has not ran properly!");
+        }
     }
 }

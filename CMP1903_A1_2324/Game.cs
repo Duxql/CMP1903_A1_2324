@@ -17,7 +17,7 @@ namespace CMP1903_A1_2324
 
         //Methods
         //create a method that rolls 3 dices and sums them up while displaying the value of each dice and the sum of the dice
-        public static void SevensOut()
+        public static int SevensOut()
         {
             //roll each dice
             //display the value of each dice
@@ -59,12 +59,13 @@ namespace CMP1903_A1_2324
                     Console.WriteLine("The current sum of all your dices: " + sum);
                     Console.ReadLine();
                 }
-
             }
+            return sum;
         }
 
-        public static void ThreeOrMore()
+        public static int ThreeOrMore()
         {
+            int gameWinner = 0;
             int userOnePoints = 0;
             int userTwoPoints = 0;
             bool gameOver = false;
@@ -74,66 +75,281 @@ namespace CMP1903_A1_2324
             {
                 if (amountOfPlayers == 1)
                 {
-                    userOnePoints += ThreeOrMorePlayer(userOnePoints, 1);
+                    Console.WriteLine("Player 1 Turn");
+                    userOnePoints = ThreeOrMorePlayer(userOnePoints, 1);
                     if (userOnePoints >= 20)
                     {
                         Console.WriteLine("Player 1 has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Player 2 - " + userTwoPoints);
+                        gameWinner = 1;
                         Console.ReadLine();
-                        gameOver = true;
                         break;
                     }
-                    userTwoPoints += ThreeOrMorePlayer(userTwoPoints, 0);
+                    Console.ReadLine();
+                    Console.WriteLine("Computer Turn");
+                    userTwoPoints = ThreeOrMorePlayer(userTwoPoints, 0);
                     if (userTwoPoints >= 20)
                     {
-                        Console.WriteLine("Player 2 has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Player 2 - " + userTwoPoints);
+                        Console.WriteLine("Computer has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Computer - " + userTwoPoints);
+                        gameWinner = 2;
                         Console.ReadLine();
-                        gameOver = true;
                         break;
                     }
+                    Console.ReadLine();
+                    Console.WriteLine("Current points of player and computer: Player - " + userOnePoints + " || Computer - " + userTwoPoints);
+                    Console.ReadLine();
                 }
                 else if (amountOfPlayers == 2)
                 {
-                    userOnePoints += ThreeOrMorePlayer(userOnePoints, 1);
+                    Console.WriteLine("Player 1 Turn");
+                    userOnePoints = ThreeOrMorePlayer(userOnePoints, 1);
                     if (userOnePoints >= 20)
                     {
                         Console.WriteLine("Player 1 has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Player 2 - " + userTwoPoints);
+                        gameWinner = 1;
                         Console.ReadLine();
-                        gameOver = true;
                         break;
                     }
-                    userTwoPoints += ThreeOrMorePlayer(userTwoPoints, 1);   
+                    Console.ReadLine();
+                    Console.WriteLine("Player 2 Turn");
+                    userTwoPoints = ThreeOrMorePlayer(userTwoPoints, 1);
                     if (userTwoPoints >= 20)
                     {
                         Console.WriteLine("Player 2 has won! The amount of points players finished with are: Player 1 - " + userOnePoints + "; Player 2 - " + userTwoPoints);
+                        gameWinner = 2;
                         Console.ReadLine();
-                        gameOver = true;
                         break;
                     }
+                    Console.ReadLine();
+                    Console.WriteLine("Current points of both players: Player 1 - " + userOnePoints + " || Player 2 - " + userTwoPoints);
+                    Console.ReadLine();
                 }
             }
-            
+            if (gameWinner == 1)
+            {
+                return userOnePoints;
+            }
+            else if (gameWinner == 2)
+            {
+                return userTwoPoints;
+            }
         }
 
         public static int ThreeOrMorePlayer(int userPoints, int playerOrNot)
         {
-            Die dieOne = new Die(0);
-            dieOne.Value = Die.Roll();
-            Die dieTwo = new Die(0);
-            dieTwo.Value = Die.Roll();
-            Die dieThree = new Die(0);
-            dieThree.Value = Die.Roll();
-            Die dieFour = new Die(0);
-            dieFour.Value = Die.Roll();
-            Die dieFive = new Die(0);
-            dieFive.Value = Die.Roll();
+            
 
             if (playerOrNot == 1)
             {
-                //user code
+                int initialUserPoints = userPoints;
+                Die[] dices = new Die[5];
+                for (int i = 0; i < 5; i++)
+                {
+                    dices[i] = new Die(0);
+                    //Console.WriteLine("test"); see if it is being initialised
+                }
+                //Console.ReadLine(); see if it is being initialised
+                for (int i = 0; i < 5; i++)
+                {
+                    dices[i].Value = Die.Roll();
+                    //Console.WriteLine(dices[i].Value); check for correct values
+                }
+                //Console.ReadLine();
+                int counter = 0;
+                int temporaryI = 0;
+                int temporaryJ = 0;
+                bool turn = true;
+                while (turn == true)
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        for (int j = 0; j < 5; j++)
+                        {
+                            if (dices[i].Value == dices[j].Value)
+                            {
+                                counter += 1;
+                                //Console.WriteLine(counter);
+                                if (counter == 2)
+                                {
+                                    temporaryJ = j;
+                                }
+                            }
+                        }
+                        if (counter == 5)
+                        {
+                            userPoints += 12;
+                            Console.WriteLine("You won! You got 12 points! Your current points are: " + userPoints + ". Here are your dice rolls: ");
+                            for (int z = 0; z < 5; z++)
+                            {
+                                Console.Write(dices[z].Value + " ");
+                            }
+                            Console.ReadLine();
+                            break;
+                        }
+                        if (counter == 4)
+                        {
+                            userPoints += 6;
+                            Console.WriteLine("You won! You got 6 points! Your current points are: " + userPoints + ". Here are your dice rolls: ");
+                            for (int z = 0; z < 5; z++)
+                            {
+                                Console.Write(dices[z].Value + " ");
+                            }
+                            Console.ReadLine();
+                            break;
+                        }
+                        if (counter == 3)
+                        {
+                            userPoints += 3;
+                            Console.WriteLine("You won! You got 3 points! Your current points are: " + userPoints + ". Here are your dice rolls: ");
+                            for (int z = 0; z < 5; z++)
+                            {
+                                Console.Write(dices[z].Value + " ");
+                            }
+                            Console.ReadLine();
+                            break;
+                        }
+                        if (counter == 2)
+                        {
+                            if (i != temporaryJ)
+                            {
+                                temporaryI = i;
+                            }
+                            
+                        }
+                        counter = 0;
+                    }
+                    if (initialUserPoints != userPoints)
+                    {
+                        break;
+                    }
+                    
+                    Console.WriteLine("Here are your dice rolls: ");
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Console.Write(dices[i].Value + " ");
+                    }
+                    Console.WriteLine("Would you like to reroll all or reroll anything that isn't " + dices[temporaryI].Value + "? Y (For All) / N (For Not All)");
+                    string userRerollAnswer = Console.ReadLine();
+                    if (userRerollAnswer == "Y")
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            dices[i].Value = Die.Roll();
+                        }
+                    }
+                    if (userRerollAnswer == "N")
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (i != temporaryI && i != temporaryJ)
+                            {
+                                dices[i].Value = Die.Roll();
+                            }
+                        }
+                    }
+                }
             }
             else if (playerOrNot == 0)
             {
-                //computer code
+                int initialUserPoints = userPoints;
+                Die[] dices = new Die[5];
+                for (int i = 0; i < 5; i++)
+                {
+                    dices[i] = new Die(0);
+                    //Console.WriteLine("test"); see if it is being initialised
+                }
+                //Console.ReadLine(); see if it is being initialised
+                for (int i = 0; i < 5; i++)
+                {
+                    dices[i].Value = Die.Roll();
+                    //Console.WriteLine(dices[i].Value); check for correct values
+                }
+                //Console.ReadLine();
+                int counter = 0;
+                int temporaryI = 0;
+                int temporaryJ = 0;
+                bool turn = true;
+                while (turn == true)
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        for (int j = 0; j < 5; j++)
+                        {
+                            if (dices[i].Value == dices[j].Value)
+                            {
+                                counter += 1;
+                                temporaryJ = j;
+                            }
+                        }
+                        if (counter == 5)
+                        {
+                            userPoints += 12;
+                            Console.WriteLine("Computer won! Computer got 12 points! Computer's current points are: " + userPoints + ". Here are their dice rolls: ");
+                            for (int z = 0; z < 5; z++)
+                            {
+                                Console.Write(dices[z].Value + " ");
+                            }
+                            Console.ReadLine();
+                            break;
+                        }
+                        if (counter == 4)
+                        {
+                            userPoints += 6;
+                            Console.WriteLine("Computer won! Computer got 6 points! Computer's current points are: " + userPoints + ". Here are their dice rolls: ");
+                            for (int z = 0; z < 5; z++)
+                            {
+                                Console.Write(dices[z].Value + " ");
+                            }
+                            Console.ReadLine();
+                            break;
+                        }
+                        if (counter == 3)
+                        {
+                            userPoints += 3;
+                            Console.WriteLine("Computer won! Computer got 3 points! Computer's current points are: " + userPoints + ". Here are their dice rolls: ");
+                            for (int z = 0; z < 5; z++)
+                            {
+                                Console.Write(dices[z].Value + " ");
+                            }
+                            Console.ReadLine();
+                            break;
+                        }
+                        if (counter == 2)
+                        {
+                            temporaryI = i;
+                        }
+                        counter = 0;
+                    }
+                    if (initialUserPoints != userPoints)
+                    {
+                        break;
+                    }
+                    Console.WriteLine("Here are the Computer dice rolls: ");
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Console.Write(dices[i].Value + " ");
+                    }
+                    Console.ReadLine();
+                    Random rnd = new Random();
+                    int randomDecision = rnd.Next(1, 11);
+
+                    if (randomDecision == 1)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            dices[i].Value = Die.Roll();
+                        }
+                    }
+                    if (randomDecision != 1)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            if (i != temporaryI && i != temporaryJ)
+                            {
+                                dices[i].Value = Die.Roll();
+                            }
+                        }
+                    }
+                }
             }
 
             return userPoints;

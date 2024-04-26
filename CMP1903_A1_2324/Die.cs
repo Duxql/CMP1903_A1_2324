@@ -14,23 +14,23 @@ namespace CMP1903_A1_2324
          */
 
         //Property
-		//Create the die object property with a value so it can be assigned a value
-		public int Value{get; set;}
+        //Create the die object property with a value so it can be assigned a value
+        public int Value { get; set; }
         public Die(int value)
         {
             Value = value;
         }
-		
-		//method
-		//create a method that generates a random number 1-6 and it returns that value to anything that calls this method
+
+        //method
+        //create a method that generates a random number 1-6 and it returns that value to anything that calls this method
         private static Random rnd = new Random();
-		public static int Roll()
+        public static int Roll()
         {
-			//Console.WriteLine("The code is still working.")
-			//randomise the number
+            //Console.WriteLine("The code is still working.")
+            //randomise the number
             //Console.WriteLine("test" + dieNumber);
-			//return the number
-			return rnd.Next(1, 7);
+            //return the number
+            return rnd.Next(1, 7);
         }
     }
 }

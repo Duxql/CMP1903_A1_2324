@@ -10,21 +10,67 @@ namespace CMP1903_A1_2324
     {
         static void Main(string[] args)
         {
-            /*
-             * Create a Game object and call its methods.
-             * Create a Testing object to verify the output and operation of the other classes.
-             */
-			 
-			 //Roll the dices and sum them up
-			 Game.SevensOut();
-			 
-			 //Test that it's correctly rolling dices
-			 Testing.testDie();
-			 
-			 //Test that it's currently summing up the dices
-			 //Testing.testSum();
+            bool quit = false;
+            while (quit == false) 
+            {
+                Console.WriteLine("Which game would you like to play? Sevens Out Or ThreeOrMore? S / T");
+                string userAnswer = Console.ReadLine();
+                if (userAnswer == "S")
+                {
+                    Game.SevensOut();
+                    Testing.testSum();
+                    do
+                    {
+                        Console.WriteLine("Would you like to play again? Y / N");
+                        string userContinue = Console.ReadLine();
+                        if (userContinue == "Y")
+                        {
+                            break;
+                        }
+                        else if (userContinue == "N")
+                        {
+                            quit = true;
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input. Please enter Y or N.");
+                            Console.ReadLine();
+                        }
+                    } while (true);
+                }
 
-            Console.ReadLine();
+                else if (userAnswer == "T")
+                {
+                    Game.ThreeOrMore();
+                    Testing.testScore();
+                    do
+                    {
+                        Console.WriteLine("Would you like to play again? Y / N");
+                        string userContinue = Console.ReadLine();
+                        if (userContinue == "Y")
+                        {
+                            break;
+                        }
+                        else if (userContinue == "N")
+                        {
+                            quit = true;
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input. Please enter Y or N.");
+                            Console.ReadLine();
+                        }
+                    } while (true);
+                }
+                else
+                {
+                    Console.WriteLine("Please type either S or T.");
+                }
+
+                Console.ReadLine();
+            }
         }
     }
 }
