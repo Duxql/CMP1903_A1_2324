@@ -28,7 +28,7 @@ namespace CMP1903_A1_2324
             //get the score by calling the function/method
             int testScore = Game.GetScore();
             //use debug.assert to make sure it is right and if it's not to display a message
-            Debug.Assert(testScore > 19, "Dice sum has not ran properly!");
+            Debug.Assert(testScore > 19, "Score winner was not worked out properly!");
         }
     }
 }
