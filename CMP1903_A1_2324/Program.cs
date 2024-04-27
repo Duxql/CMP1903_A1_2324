@@ -36,6 +36,7 @@ namespace CMP1903_A1_2324
                         {
                             //call statistics class
                             Statistics.SevensOutStatistics();
+                            break;
                         }
                         else if (userContinue == "N")
                         {
